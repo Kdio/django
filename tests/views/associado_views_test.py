@@ -24,8 +24,8 @@ def test_associado_index_as_user(auto_login_user):
 
 @pytest.mark.django_db
 def test_associado_show(auto_login_user):
-    contrato = Contrato.objects.create(nome=f"Contrato Nome")
-    associado = Associado.objects.create(nome=f"Associado Nome")
+    contrato = Contrato.objects.create(nome="Contrato Nome")
+    associado = Associado.objects.create(nome="Associado Nome")
     contratacao = Contratacao.objects.create(contrato=contrato, associado=associado, descricao='Descrição', valor=1.00, ativa=True)
     client, _user = auto_login_user()
     response = client.get(reverse('associado_show', kwargs={'associado_id':associado.id}))

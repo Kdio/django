@@ -16,10 +16,9 @@ MESES = [
 
 class Competencia(models.Model):
     """ Competencia class """
-    ano = models.CharField(max_length=4, unique=False, null=False, verbose_name=_('Ano'))
-    mes = models.CharField(
-        max_length=2, unique=False, null=False, choices=MESES, verbose_name=_('Mês'))
-    data = models.DateField(blank=False, null=False, verbose_name=_('Data'))
+    ano = models.CharField(max_length=4, verbose_name=_('Ano'))
+    mes = models.CharField(max_length=2, choices=MESES, verbose_name=_('Mês'))
+    data = models.DateField(verbose_name=_('Data'))
 
     DEFAULT_DAY = 25
 
@@ -39,27 +38,27 @@ class Competencia(models.Model):
         return False
 
     @classmethod
-    def current(class_):
+    def current(cls):
         """ Competencia current method """
-        return class_.objects.first()
+        return cls.objects.first()
 
     @classmethod
-    def proxima(class_):
+    def proxima(cls):
         """ Competencia proxima method """
-        current = class_.current()
+        current = cls.current()
         ano = int(current.ano)
         mes = int(current.mes) + 1
         if mes == 13:
             ano += 1
             mes = 1
-        return class_(
+        return cls(
             ano=str(ano), mes=str(mes).zfill(2),
-            data=datetime.datetime(ano, mes, class_.DEFAULT_DAY))
+            data=datetime.datetime(ano, mes, cls.DEFAULT_DAY))
 
 
     @classmethod
     @transaction.atomic
-    def create(class_):
+    def create(cls):
         # Atribui multas onde necessário
         multas = Mensalidade.objects.filter(data_pgto__isnull=True).all()
         for mensalidade in multas:
@@ -68,7 +67,7 @@ class Competencia(models.Model):
 
         """ Competencia create method """
         # Abre nova competência
-        competencia = class_.proxima()
+        competencia = cls.proxima()
         competencia.save()
         for associado_id in Contratacao.associados_ativos():
             mensalidade = Mensalidade.objects.create(

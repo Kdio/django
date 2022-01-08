@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Contrato(models.Model):
     """ Contrato class """
-    nome = models.CharField(max_length=50, unique=True, null=False, verbose_name=_('Nome'))
+    nome = models.CharField(max_length=50, unique=True, verbose_name=_('Nome'))
 
     class Meta:
         ordering = ['nome']
@@ -20,8 +20,8 @@ class Contrato(models.Model):
         return len(self.contratacoes.all()) == 0
 
     @classmethod
-    def choices(class_, include_all=False):
+    def choices(cls, include_all=False):
         """ Rubrica choices method """
-        choices = [(r.id, r.nome) for r in class_.objects.all()]
+        choices = [(r.id, r.nome) for r in cls.objects.all()]
         if include_all: choices.insert(0, ("all", "(Todos)"))
         return choices

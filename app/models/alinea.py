@@ -4,13 +4,12 @@ from django.utils.translation import gettext_lazy as _
 class Alinea(models.Model):
     """ Alinea class """
     mensalidade = models.ForeignKey(
-        'app.Mensalidade', null=False, on_delete=models.CASCADE, verbose_name=_('Mensalidade'),
+        'app.Mensalidade', on_delete=models.CASCADE, verbose_name=_('Mensalidade'),
         related_name='alineas')
     contratacao = models.ForeignKey(
-        'app.Contratacao', null=False, on_delete=models.CASCADE, verbose_name=_('Contratacao'),
+        'app.Contratacao', on_delete=models.CASCADE, verbose_name=_('Contratacao'),
         related_name='alineas')
-    valor = models.DecimalField(
-        decimal_places=2, max_digits=15, null=False, verbose_name=_('Valor'))
+    valor = models.DecimalField(decimal_places=2, max_digits=15, verbose_name=_('Valor'))
 
     class Meta:
         unique_together = (('mensalidade', 'contratacao'))

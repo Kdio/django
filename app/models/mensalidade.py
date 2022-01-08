@@ -10,12 +10,12 @@ from app.utils.validators import validate_non_zero
 class Mensalidade(models.Model):
     """ Mensalidade class """
     associado = models.ForeignKey(
-        'app.Associado', null=False, on_delete=models.CASCADE, verbose_name=_('Associado'),
+        'app.Associado', on_delete=models.CASCADE, verbose_name=_('Associado'),
         related_name='mensalidades')
     competencia = models.ForeignKey(
-        'app.Competencia', null=False, on_delete=models.CASCADE, verbose_name=_('Competência'),
+        'app.Competencia', on_delete=models.CASCADE, verbose_name=_('Competência'),
         related_name='mensalidades')
-    data_vence = models.DateField(blank=False, null=False, verbose_name=_('Data de Vecimento'))
+    data_vence = models.DateField(verbose_name=_('Data de Vecimento'))
     multa = models.DecimalField(
         decimal_places=2, max_digits=15, blank=True, null=True, verbose_name=_('Multa'))
     saldo = models.DecimalField(

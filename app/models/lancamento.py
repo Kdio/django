@@ -6,11 +6,11 @@ from app.utils.validators import validate_non_zero
 class Lancamento(models.Model):
     """ Lancamento class """
     rubrica = models.ForeignKey(
-        'app.Rubrica', null=False, on_delete=models.CASCADE, verbose_name=_('Rúbrica'),
+        'app.Rubrica', on_delete=models.CASCADE, verbose_name=_('Rúbrica'),
         related_name='lancamentos')
     historico = models.CharField(max_length=250, blank=True, verbose_name=_('Histórico'))
-    data = models.DateField(blank=False, null=False, verbose_name=_('Data'))
-    valor = models.DecimalField(decimal_places=2, max_digits=15, null=False,
+    data = models.DateField(verbose_name=_('Data'))
+    valor = models.DecimalField(decimal_places=2, max_digits=15,
         validators=[validate_non_zero], verbose_name=_('Valor'))
 
     class Meta:

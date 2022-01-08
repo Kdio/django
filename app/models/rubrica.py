@@ -8,8 +8,8 @@ TIPO_RUBRICA = [(DEBITO, _('Débito')), (CREDITO, _('Crédito'))]
 
 class Rubrica(models.Model):
     """ Rubrica class """
-    nome = models.CharField(max_length=50, unique=True, null=False, verbose_name=_('Nome'))
-    tipo = models.IntegerField(default=1, null=False, choices=TIPO_RUBRICA, verbose_name=_('Tipo'))
+    nome = models.CharField(max_length=50, unique=True, verbose_name=_('Nome'))
+    tipo = models.IntegerField(default=1, choices=TIPO_RUBRICA, verbose_name=_('Tipo'))
 
     class Meta:
         ordering = ['nome']
@@ -30,8 +30,8 @@ class Rubrica(models.Model):
         return _('Crédito') if self.tipo == 1 else _('Débito')
 
     @classmethod
-    def choices(class_, include_all=False):
+    def choices(cls, include_all=False):
         """ Rubrica choices method """
-        choices = [(r.id, r.nome) for r in class_.objects.all()]
+        choices = [(r.id, r.nome) for r in cls.objects.all()]
         if include_all: choices.insert(0, ("all", "(Todas)"))
         return choices
