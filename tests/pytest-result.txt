@@ -1,0 +1,102 @@
+============================= test session starts ==============================
+platform linux -- Python 3.8.10, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- /home/kdio/Projects/asfetec/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/kdio/Projects/asfetec, configfile: pytest.ini
+plugins: cov-3.0.0
+collecting ... collected 39 items
+
+tests/models/test_model_associado.py::test_new_associado PASSED          [  2%]
+tests/models/test_model_associado.py::test_associado_nome_suplied PASSED [  5%]
+tests/models/test_model_associado.py::test_associado_matricula_unique PASSED [  7%]
+tests/models/test_model_associado.py::test_associado_contratacoes PASSED [ 10%]
+tests/models/test_model_associado.py::test_associado_mensalidades PASSED [ 12%]
+tests/models/test_model_associado.py::test_default_scope PASSED          [ 15%]
+tests/models/test_model_caixa.py::test_new_caixa PASSED                  [ 17%]
+tests/models/test_model_caixa.py::test_caixa_data_is_date PASSED         [ 20%]
+tests/models/test_model_caixa.py::test_caixa_valor_is_numeric PASSED     [ 23%]
+tests/models/test_model_caixa.py::test_caixa_valor_not_zero PASSED       [ 25%]
+tests/models/test_model_caixa.py::test_default_scope PASSED              [ 28%]
+tests/models/test_model_rubrica.py::test_new_rubrica PASSED              [ 30%]
+tests/models/test_model_rubrica.py::test_new_rubrica_default_tipo PASSED [ 33%]
+tests/models/test_model_rubrica.py::test_rubrica_nome_suplied PASSED     [ 35%]
+tests/models/test_model_rubrica.py::test_rubrica_nome_unique PASSED      [ 38%]
+tests/models/test_model_rubrica.py::test_rubrica_tipo_integer PASSED     [ 41%]
+tests/models/test_model_rubrica.py::test_rubrica_tipo_limits PASSED      [ 43%]
+tests/models/test_model_rubrica.py::test_rubrica_lancamentos PASSED      [ 46%]
+tests/models/test_model_rubrica.py::test_default_scope PASSED            [ 48%]
+tests/models/test_model_rubrica.py::test_choices PASSED                  [ 51%]
+tests/models/test_model_usuario.py::test_new_usuario PASSED              [ 53%]
+tests/models/test_model_usuario.py::test_usuario_nome_suplied PASSED     [ 56%]
+tests/models/test_model_usuario.py::test_usuario_nome_unique PASSED      [ 58%]
+tests/models/test_model_usuario.py::test_set_password PASSED             [ 61%]
+tests/models/test_model_usuario.py::test_default_scope PASSED            [ 64%]
+tests/routes/test_routes_rubrica.py::test_rubrica_index_anonymous PASSED [ 66%]
+tests/routes/test_routes_rubrica.py::test_rubrica_index_default PASSED   [ 69%]
+tests/routes/test_routes_rubrica.py::test_rubrica_index_admin PASSED     [ 71%]
+tests/routes/test_routes_rubrica.py::test_rubrica_remove PASSED          [ 74%]
+tests/routes/test_routes_rubrica.py::test_rubrica_edit PASSED            [ 76%]
+tests/routes/test_routes_rubrica.py::test_rubrica_add PASSED             [ 79%]
+tests/routes/test_routes_rubrica.py::test_rubrica_form_validation PASSED [ 82%]
+tests/routes/test_routes_usuario.py::test_usuario_index_anonymous PASSED [ 84%]
+tests/routes/test_routes_usuario.py::test_usuario_index_default PASSED   [ 87%]
+tests/routes/test_routes_usuario.py::test_usuario_logout_login PASSED    [ 89%]
+tests/routes/test_routes_usuario.py::test_usuario_index_admin PASSED     [ 92%]
+tests/routes/test_routes_usuario.py::test_usuario_remove PASSED          [ 94%]
+tests/routes/test_routes_usuario.py::test_usuario_add PASSED             [ 97%]
+tests/routes/test_routes_usuario.py::test_usuario_reset PASSED           [100%]
+
+---------- coverage: platform linux, python 3.8.10-final-0 -----------
+Name                                         Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------
+app/__init__.py                                 84     10    88%   102, 110-112, 118, 121-123, 126, 132
+app/entities/alinea/__init__.py                  3      0   100%
+app/entities/alinea/model.py                    13      2    85%   21, 25
+app/entities/alinea/routes.py                    3      0   100%
+app/entities/associado/__init__.py               3      0   100%
+app/entities/associado/forms.py                 32     13    59%   20-23, 27-31, 42-45
+app/entities/associado/model.py                 26      0   100%
+app/entities/associado/routes.py               110     76    31%   18-31, 38, 45-52, 58-66, 72-85, 91-101, 109-126, 134-142
+app/entities/caixa/__init__.py                   3      0   100%
+app/entities/caixa/forms.py                     37     14    62%   29-33, 48-53, 71-73
+app/entities/caixa/model.py                     42      0   100%
+app/entities/caixa/routes.py                    85     56    34%   14-33, 37-54, 60-62, 71-74, 80-89, 95-96, 102-104, 112-113
+app/entities/competencia/__init__.py             3      0   100%
+app/entities/competencia/forms.py               17      6    65%   21-24, 28-29
+app/entities/competencia/model.py               55     24    56%   28, 32, 36, 53, 58-64, 71, 77-97
+app/entities/competencia/routes.py              37     18    51%   16-18, 27-29, 36-47
+app/entities/contratacao/__init__.py             3      0   100%
+app/entities/contratacao/forms.py               30     10    67%   22-26, 44-48
+app/entities/contratacao/model.py               26      5    81%   25, 29, 36, 41, 47
+app/entities/contratacao/routes.py               3      0   100%
+app/entities/contrato/__init__.py                3      0   100%
+app/entities/contrato/forms.py                  17      6    65%   17-18, 22-25
+app/entities/contrato/model.py                  16      4    75%   15, 19, 26, 31
+app/entities/contrato/routes.py                 48     25    48%   16-17, 24-27, 34-41, 48-58
+app/entities/errors/__init__.py                  3      0   100%
+app/entities/errors/routes.py                   12      3    75%   11, 17-18
+app/entities/manutencao/__init__.py              3      0   100%
+app/entities/manutencao/forms.py                 6      0   100%
+app/entities/manutencao/routes.py               60     34    43%   19-21, 28-34, 41, 47-56, 61-77
+app/entities/mensalidade/__init__.py             3      0   100%
+app/entities/mensalidade/forms.py               25      9    64%   19-21, 45-50
+app/entities/mensalidade/model.py               52     22    58%   36, 40, 44-46, 51-64, 68-72, 80
+app/entities/mensalidade/routes.py              54     29    46%   17-30, 38-48, 54, 61, 67, 74
+app/entities/root/__init__.py                    3      0   100%
+app/entities/root/routes.py                      8      0   100%
+app/entities/rubrica/__init__.py                 3      0   100%
+app/entities/rubrica/forms.py                   19      0   100%
+app/entities/rubrica/model.py                   41      0   100%
+app/entities/rubrica/routes.py                  49      0   100%
+app/entities/usuario/__init__.py                 3      0   100%
+app/entities/usuario/forms.py                   31      0   100%
+app/entities/usuario/model.py                   25      0   100%
+app/entities/usuario/routes.py                  66      0   100%
+app/resources/icons.py                          31      0   100%
+app/resources/menus.py                           3      0   100%
+app/resources/public.py                         29     13    55%   22-24, 28-30, 34-36, 40-43
+app/templates/components/actions/void.html       0      0   100%
+--------------------------------------------------------------------------
+TOTAL                                         1228    379    69%
+
+
+============================== 39 passed in 7.94s ==============================

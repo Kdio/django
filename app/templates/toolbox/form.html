@@ -1,0 +1,19 @@
+{% load public_tags %}
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+    {% endfor %}
+    <br />
+    <button type="submit" class="btn btn-primary sysbutton"><i class="far fa-save"></i> {{ submit_caption|default_submit_caption }}</button>
+    {% if no_back_button %}
+    {% else %}
+      {% with href=back_url caption=back_caption %}
+        {% include 'toolbox/actions/back.html' %}
+      {% endwith %}
+    {% endif %}
+</form>

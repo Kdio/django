@@ -1,0 +1,27 @@
+{% load public_tags %}
+{% if table_data|length > 0 %}
+  <table class="table-data"  width="100%">
+    <thead>
+      <tr>
+        {% for item in table_headers %}
+          <th class="{{ item.class|css_class }}">{{ item.data }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in table_data %}
+        {% setvar forloop.counter as line_index %}
+        <tr>
+          {% if has_total and table_data|length == line_index %}
+              {% setvar "th" as tag %}
+          {% else %}
+              {% setvar "td" as tag %}
+          {% endif %}
+          {% for td in line %}
+            <{{ tag }} class="{{ td.class|css_class }}">{{ td.data }}</{{ tag }}>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}

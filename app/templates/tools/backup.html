@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form id="form-backup" action="#" method="POST">
+      {% csrf_token %}
+      <div align="center">
+        <a class="btn btn-info sysbutton text-white text-decoration-none" href="#" onclick="document.getElementById('form-backup').submit();return false;">
+          <i class="icon fas fa-download text-white"></i> Iniciar backup
+        </a>
+      </div>
+    </form>
+
+{% endblock %}

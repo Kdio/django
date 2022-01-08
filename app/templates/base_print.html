@@ -1,0 +1,21 @@
+{% load static %}
+{% load public_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block page_title %}[{{ "APP_NAME"|settings_value }}] {{ title }}{% endblock %}</title>
+    {{ 'css/printer.css'|static_file|safe }}
+</head>
+
+<body>
+  <div class="page-center">
+    <img src="{% static 'images/logo_print.jpg' %}" style="width: 300px;">
+  </div>
+  <div class="page-center">
+    <h3 align="center">{{ title }}</h3>
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

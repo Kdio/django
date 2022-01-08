@@ -1,0 +1,29 @@
+{% load public_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block page_title %}[{{ "APP_NAME"|settings_value }}] {{ title }}{% endblock %}</title>
+    {{ 'css/main.css'|static_file|safe }}
+    {{ 'js/main.js'|static_file|safe }}
+</head>
+
+<body class="antialiased d-flex flex-comumn min-vh-100">
+  <div class="wrapper flex-grow-1">
+
+    {% include 'toolbox/header.html' %}
+    {% include 'toolbox/navbar.html' %}
+    {% include 'toolbox/alerts.html' %}
+
+    <div class="navbar navbar-expand-md navbar-light">
+      <div class="container-xl">
+        <div class="col-12">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

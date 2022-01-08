@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% include 'toolbox/search_box.html' %}
+
+  {% include 'toolbox/table.html' %}
+  <br />
+  <div class="text-center">
+    {% url "lancamento_new" as href %}
+    {% with caption="Novo lançamento" %}
+      {% include 'toolbox/actions/new.html' %}
+    {% endwith %}
+
+    {% if not search_form_show %}
+      {% url "lancamento_print" as href %}
+      {% with caption='Imprimir movimento' %}
+        {% include 'toolbox/actions/print.html' %}
+      {% endwith %}
+    {% endif %}
+  </div>
+{% endblock %}

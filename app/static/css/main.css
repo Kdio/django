@@ -1,0 +1,308 @@
+<source href="https://cdnjs.com/libraries">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" integrity="sha512-1fPmaHba3v4A7PaUsComSM4TBsrrRGs+/fv0vrzafQ+Rw+siILTiJa0NtFfvGeyY5E182SDTaF5PqP+XOHgJag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  body { background: #e8f1f9; }
+
+  .bg-navbar { background: #b0b0b0;}
+
+  .navbar-height { height: 30px;}
+
+  .paginator {
+    font-size: 0.75rem;
+  }
+
+  li.page-item.active a.page-link {
+    background: #a0a0a0;
+    border-color: #a0a0a0;
+  }
+
+  input[type="checkbox"] {
+      float: left;
+  }
+
+  .form-control {
+      width: auto;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .plain-text {
+    text-decoration: none;
+  }
+
+  .nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .systitle {
+    text-shadow: 1px 1px 3px #555555;
+  }
+
+  .sysshadow {
+    border-radius: 10px;
+    box-shadow: 3px 3px 4px #555555;
+  }
+
+  .sysbutton {
+    border-radius: 5px;
+    margin-right: 10px;
+    box-shadow: 3px 3px 4px #555555;
+  }
+
+    /*box-shadow: 1px 2px 3px 4px rgba(2,2,2,0.2);*/
+
+  .help-block { color: red; }
+  .color-red { color: red; }
+  .color-green { color: green; }
+
+  form .col-2, form .col-3, form .col-4, form .col-5, form .col-6, form .col-7,
+  form .col-8, form .col-9, form .col-10, form .form-label {
+    --tblr-gutter-y: 0;
+  }
+
+  .alert {
+    i.icon {
+      color: var(--tblr-alert-color);
+    }
+
+    .alert-title {
+      color: var(--tblr-alert-color);
+    }
+  }
+
+  .errorlist {
+    color: red;
+    font-style: italic;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+
+  .show-error {
+    .show-error-message {
+      @extend .font-weight-bold;
+      @extend .text-danger;
+    }
+
+    @extend .pb-3;
+  }
+
+  .page-wrapper {
+    .page-header {
+      margin: 0.75rem 0 0;
+
+      .page-title {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .table-title {
+    background: #a0a0a0;
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .table-actions {
+    text-align: center;
+    width: 15%;
+    white-space: nowrap;
+  }
+
+  .row > *, .row-cards {
+    --tblr-gutter-y: 0rem;
+  }
+
+  .table thead th {
+    text-transform: none;
+    font-size: 0.85rem;
+    background: #c0c0c0;
+    vertical-align: middle;
+  }
+
+  .table td {
+    vertical-align: middle;
+  }
+
+  .show-group {
+    .card-footer {
+      padding-bottom: 0;
+    }
+  }
+
+  /* Card stuff */
+  .card {
+    margin-bottom: 0.5rem;
+
+    .card-header[data-bs-toggle="collapse"] {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  /* Icons stuff */
+  // fix icons' size
+  @mixin icon-size($size) {
+    display: inrubrica;
+    height: auto;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    vertical-align: middle;
+    font-size: $size;
+  }
+
+  .layout-footer {
+    .btn {
+      .icon {
+        @include icon-size(small);
+      }
+    }
+  }
+
+  .btn-sm {
+    .icon {
+      @include icon-size(small);
+    }
+  }
+
+  .btn {
+    .icon {
+      &.small {
+        @include icon-size(small);
+      }
+
+      &.textless {
+        margin: 0;
+        width: auto;
+      }
+    }
+  }
+
+  .icon.small {
+    @include icon-size(small);
+  }
+
+  .page-title {
+    .icon {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .dropdown-link {
+    .icon {
+      @include icon-size(small);
+    }
+  }
+
+  /* Pagination stuff */
+  .pagination-card {
+    .card-body {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      .pagination-info {
+        transform: translateY(15%);
+      }
+    }
+
+    ul.pagination {
+      margin-bottom: 0;
+    }
+  }
+
+  .search-card {
+    .form-group {
+      margin-bottom: 4px !important;
+    }
+
+    label {
+      font-weight: normal;
+      margin-bottom: 4px;
+    }
+  }
+
+  // fix SimpleForm custom display input to not be bold
+  form {
+    label.display {
+      font-weight: 400; // default
+    }
+
+    select.form-control {
+      appearance: auto;
+      width: auto;
+      max-width: 100%;
+    }
+
+  }
+
+  .currency {
+    width: 20ch;
+  }
+
+  .horizontal-boolean {
+    transform: translateY(45%);
+  }
+
+  .form-actions {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="file"] {
+    padding-top: calc(0.4375rem + 1px);
+    padding-bottom: calc(0.4375rem + 1px);
+  }
+
+  .form-group.check_boxes {
+    .form-check {
+      clear: both;
+    }
+  }
+
+  td {
+    .form-group.mb-3 {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    table {
+      thead {
+        display: none;
+      }
+
+      td {
+        display: flex;
+        border: none;
+      }
+
+      td::before {
+        content: attr(label);
+        font-weight: bold;
+        width: 120px;
+        min-width: 120px;
+      }
+
+      tbody {
+        tr {
+          td {
+            // default tabler layout sets padding-left only for `tr td:first-child`
+            padding-left: 1rem !important;
+          }
+        }
+      }
+    }
+  }
+
+</style>

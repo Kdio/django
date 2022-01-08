@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load trans from i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row center">
+        <div class="col-md-6 offset-md-3">
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <h1>Entrar no sistema</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" class="form-control" name="username" placeholder="Nome" required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" name="password" placeholder="SZenha" required>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary sysbutton">Entrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

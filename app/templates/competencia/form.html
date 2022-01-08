@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load public_tags %}
+
+{% block content %}
+    <div align="center">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            <br />
+            <button type="submit" class="btn btn-danger sysbutton"><i class="far fa-save"></i> Abrir nova competência</button>
+            {% url 'competencia_index' as href %}
+            {% include 'toolbox/actions/back.html' %}
+        </form>
+    </div>
+{% endblock %}

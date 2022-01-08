@@ -1,0 +1,42 @@
+{% load public_tags %}
+{% load menus_tags %}
+{% menus_array as menus %}
+{% if user.is_authenticated %}
+<div class="container-xl">
+  <nav class="navbar navbar-expand-md navbar-light bg-navbar sysshadow" style="padding-left: 10px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% for main_menu in menus %}
+          {% setvar forloop.counter as id_index %}
+          {% if main_menu.admin == False or user.is_staff %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ id_index }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <i class="icon {{ main_menu.icon }}"></i>
+                </span>
+                <span class="nav-link-title">{{ main_menu.name }}</span>
+              </a>
+              <div class="dropdown-menu navbar-light bg-navbar sysshadow" aria-labelledby="navbarDropdown{{ id_index }}">
+                {% for menu in main_menu.options %}
+                  {% if menu.name == '-' %}
+                    <div class="dropdown-divider"></div>
+                  {% else %}
+                    {% if menu.admin == False or user.is_staff %}
+                      <a href="{{ menu.route }}" class="dropdown-item d-print-none">
+                        <i class="icon {{ menu.icon }}"></i> {{ menu.name }}
+                      </a>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</div>
+{% endif %}

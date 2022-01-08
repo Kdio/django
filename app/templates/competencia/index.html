@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% include 'toolbox/table.html' %}
+  <br />
+  {% url "competencia_new" as href %}
+  {% with caption="Abrir nova competência" %}
+    <div class="text-center">
+      {% include 'toolbox/actions/new.html' %}
+    </div>
+  {% endwith %}
+
+{% endblock %}

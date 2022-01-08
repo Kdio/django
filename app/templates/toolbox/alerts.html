@@ -1,0 +1,18 @@
+{% load public_tags %}
+{% if messages %}
+  <div class="container">
+    {% for message in messages %}
+      <div class="mt-2 alert alert-dismissible fade show alert-{% if message.tags %}{{ message.tags }}{% else %}{{ 'success' }}{% endif %}" role="alert">
+        <div class="d-flex">
+          <div>
+            <i class="icon {{ message.tags|default_alert_icon }} alert-icon fa-lg"></i>
+          </div>
+          <div>
+            <span class="alert-title">&nbsp;{{ message }}</span>
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-sm" data-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

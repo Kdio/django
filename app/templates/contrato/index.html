@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% include 'toolbox/table.html' %}
+  <br />
+  {% url "contrato_new" as href %}
+  {% with caption="Novo contrato" %}
+    <div class="text-center">
+      {% include 'toolbox/actions/new.html' %}
+    </div>
+  {% endwith %}
+
+{% endblock %}

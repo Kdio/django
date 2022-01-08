@@ -1,0 +1,7 @@
+pylint.txt
+.coverage
+app_test.db
+/venv
+/logs
+/media
+**__pycache__**

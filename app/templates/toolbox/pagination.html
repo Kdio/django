@@ -1,0 +1,14 @@
+{% if query_results.has_prev or query_results.has_next %}
+
+  {% from "bootstrap/pagination.html" import render_pagination %}
+
+  {% set result = render_pagination(query_results) %}
+  {% autoescape false %}
+    {{ result |
+      replace("<nav>", '<nav class="paginator d-print-none">') |
+      replace("disabled", "page-item disabled") |
+      replace("active", "page-item active") |
+      replace("href=", 'class="page-link" href=') }}
+  {% endautoescape %}
+
+{% endif %}

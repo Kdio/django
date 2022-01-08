@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load public_tags %}
+
+{% block content %}
+  {{ mensalidade|show_item:'associado'|safe }}
+  {{ mensalidade|show_item:'competencia'|safe }}
+  {{ mensalidade|show_item:'data_vence'|safe }}
+  {{ mensalidade|show_item:'multa'|safe }}
+  {{ mensalidade|show_item:'saldo'|safe }}
+  {% with caption='Juros' value=mensalidade.juros %}
+    {% include 'toolbox/show_item.html' %}
+  {% endwith %}
+  {% with caption='Total' value=mensalidade.total %}
+    {% include 'toolbox/show_item.html' %}
+  {% endwith %}
+
+  {% include 'toolbox/table.html' %}
+  <br />
+    <div class="text-center">
+      {% url 'mensalidade_print' mensalidade.id as href %}
+      {% setvar 'Imprimir' as caption %}
+      {% include 'toolbox/actions/print.html' %}
+      {% setvar '' as caption %}
+      {% url 'associado_show' mensalidade.associado_id as href %}
+      {% include 'toolbox/actions/back.html' %}
+    </div>
+{% endblock %}

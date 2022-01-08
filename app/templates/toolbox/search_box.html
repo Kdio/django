@@ -1,0 +1,24 @@
+{% load public_tags %}
+<div class="card search-card d-print-none sysshadow">
+  <a class="card-header table-title plain-text text-black sysshadow" data-toggle="collapse" href="#search-box" role="button" aria-expanded="true" aria-controls="collapsible-card-pesquisa">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <div class="card-title"><i class="icon fas fa-search"></i> {{ search_caption|default_search_caption }}</div>
+      </li>
+    </ul>
+  </a>
+  <div id="search-box" class="card-body collapsible collapse {% if search_form_show %}{{ 'show' }}{% endif %}">
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for field in search_form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <br />
+        <button type="submit" class="btn btn-primary sysbutton"><i class="fas fa-search"></i> {{ search_caption|default_search_caption }}</button>
+    </form>
+  </div>
+</div>

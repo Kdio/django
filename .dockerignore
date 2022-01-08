@@ -1,0 +1,12 @@
+Dockerfile
+pylint.txt
+app_test.db
+.coverage
+.dockerignore
+.git
+.cache
+venv/
+logs/
+__pycache__/
+
+**__pycache__**

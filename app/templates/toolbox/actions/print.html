@@ -1,0 +1,8 @@
+{% load public_tags %}
+{% if href %}
+{% else %}
+  {% setvar data.0 as href %}
+{% endif %}
+<a class="btn btn-secondary d-print-none sysbutton text-white text-decoration-none" href="{{ href }}" target="_blank" title="Imprimir">
+  <i class="icon fas fa-print"></i> {{ caption }}
+</a>

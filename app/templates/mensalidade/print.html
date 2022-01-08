@@ -1,0 +1,61 @@
+{% extends "base_print.html" %}
+{% load public_tags %}
+
+{% block content %}
+  {% for mensalidade in mensalidades %}
+    <div class="page-center">
+      <h3>Mensalidade de {{ mensalidade.competencia }}</h3>
+      <table width="100%">
+        <tr>
+          <td width="20%">Associado</td>
+          <td class="data">{{ mensalidade.associado }}</td>
+        </tr>
+        <tr>
+          <td>Vencimento</td>
+          <td class="data">{{ mensalidade.data_vence }}</td>
+        </tr>
+        {% if mensalidade.multa %}
+          <tr>
+            <td>Multa</td>
+            <td class="data">{{ mensalidade.multa }}</td>
+          </tr>
+        {% endif %}
+        {% if mensalidade.juros %}
+          <tr>
+            <td>Juros</td>
+            <td class="data">{{ mensalidade.juros }}</td>
+          </tr>
+        {% endif %}
+        {% if mensalidade.saldo %}
+          <tr>
+            <td>Saldo anterior</td>
+            <td class="data">{{ mensalidade.saldo }}</td>
+          </tr>
+        {% endif %}
+        <tr>
+          <td>Total</td>
+          <td class="data">{{ mensalidade.total }}</td>
+        </tr>
+        {% if mensalidade.data_pgto %}
+          <tr>
+            <td>Data pagamento</td>
+            <td class="data">{{ mensalidade.data_pgto }}</td>
+          </tr>
+        {% endif %}
+        {% if mensalidade.valor_pgto %}
+          <tr>
+            <td>Valor pago</td>
+            <td class="data">{{ mensalidade.valor_pgto }}</td>
+          </tr>
+        {% endif %}
+      </table>
+    </div>
+    <br />
+    {% with table_datas|get_item_by_index:forloop.counter0 as table_data %}
+      {% include 'toolbox/table_print.html' %}
+    {% endwith %}
+    {% if mensalidades|length > 1 %}
+      <hr />
+    {% endif %}
+  {% endfor %}
+{% endblock %}

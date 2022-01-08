@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load public_tags %}
+
+{% block content %}
+
+  {{ associado|show_item:'nome'|safe }}
+  {{ associado|show_item:'matricula'|safe }}
+  {{ associado|show_item:'telefone'|safe }}
+
+  {% with table_title="Contratacões" table_id="contratacoes" table_headers=contratacoes.table_headers table_data=contratacoes.table_data table_actions=contratacoes.table_actions %}
+    {% include 'toolbox/table.html' %}
+    <br />
+    {% url "contratacao_new" associado.id as href %}
+    {% with caption="Nova contratação" %}
+      <div class="text-center">
+        {% include 'toolbox/actions/new.html' %}
+      </div>
+    {% endwith %}
+  {% endwith %}
+
+  <hr />
+
+  {% with table_title="Mensalidades" table_id="mensalidades" table_headers=mensalidades.table_headers table_data=mensalidades.table_data table_actions=mensalidades.table_actions table_status="show" %}
+    {% include 'toolbox/table.html' %}
+  {% endwith %}
+  {% url "mensalidade_print_associado" associado.id as href %}
+  {% setvar "Imprimir todas" as caption %}
+  <div class="text-center">
+    {% include 'toolbox/actions/print.html' %}
+  </div>
+
+{% endblock %}

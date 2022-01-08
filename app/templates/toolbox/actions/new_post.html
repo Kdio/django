@@ -1,0 +1,10 @@
+{% if message|length > 0 %}
+  {% set message = 'window.confirm(' ~ "'" ~ message ~ "'" ~ ')' %}
+{% endif %}
+<div class="btn btn-info d-print-none sysbutton" title="{{ caption }}">
+  <form id="form-add" action="{{ href }}" method="POST">
+    <a href="#" onclick="if ({{ message }}) { document.getElementById('form-add').submit(); return false; }" class="text-white text-decoration-none">
+      <i class="icon fas fa-plus-circle text-white"></i> {{ caption }}
+    </a>
+  </form>
+</div>
